@@ -1,0 +1,38 @@
+
+
+input.ng-valid {
+    border-left: 5px solid rgb(83, 231, 90); /* green */
+  }
+  
+  input.ng-invalid.ng-touched  {
+    border-left: 5px solid #d11916; /* red */
+  }
+
+ 
+
+  input[type="text"] {
+    width: 200px;
+  }
+  
+  input[type="password"]{
+    width: 200px;
+  }
+  
+  #logo {
+    height: 25px;
+    vertical-align: middle;
+  }
+
+.card-container.card {
+  max-width: 400px;
+  padding-left: 80px;
+}
+
+.centered {
+  position: fixed;
+  top: 5%;
+  left: 30%;
+  margin-top: 50px;
+  margin-left: 50px;
+}
+  

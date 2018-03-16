@@ -1,0 +1,21 @@
+#logo {
+    height: 25px;
+  }
+
+
+  .center{
+    position:fixed;
+      
+    left:25%;
+    top:25%;
+    margin-left:150px;
+    margin-top:50px;
+  }
+
+  h2{
+    text-align: center  
+  }
+
+  .jumbotron{
+    margin: 25px 25px 25px ;
+  }

@@ -1,0 +1,58 @@
+<nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+          <div class="navbar-header">
+                <a class="navbar-brand" routerLink="/first"><img id="logo" class="pull-left" src="https://www.ag-grid.com/images/angular2.png">CNT</a>
+            </div>
+          <ul class="nav navbar-nav">
+            <li><a href="#">Home</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a routerLink="/register"><span class="glyphicon glyphicon-user"></span> Register</a></li>
+            <li><a routerLink="/first"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+          </ul>
+        </div>
+      </nav>
+<div class="centered">
+      <div class="card card-container">
+            
+<h2 class="text-center">Login Details</h2>
+<div class="jumbotron vertical-center">
+    <div class="container">
+        <form [formGroup]="loginform" (ngSubmit)="submitted()">
+            <div formGroupName="name">
+                <div class="form-group">
+                    <label for="firstname">Firstname:</label>
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="glyphicon glyphicon-user"></i>
+                        </span>
+                        <input type="text" id="firstname" formControlName="firstname" class="form-control">
+                        <span *ngIf="!loginform.get('name.firstname').valid && loginform.get('name.firstname').touched" class="help-block">enter valid name</span>
+                    </div>
+                </div>
+                <br>
+                <div class="form-group">
+                    <label for="lastname">Password:</label>
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="glyphicon glyphicon-lock"></i></span>
+                            
+                        <input type="password" id="password" formControlName="password" class="form-control">
+                        <span *ngIf="!loginform.get('name.password').valid && loginform.get('name.password').touched" class="help-block">enter password</span>
+                    </div>
+                    <br>
+                </div>
+            </div>
+            <button class="btn btn-default" type="submit" [disabled]="!loginform.valid">login</button>
+
+            <button class="btn btn-primary" (click)="returning()">Register</button>
+         
+            <button class="btn btn-primary" (click)="reroute()">Delete</button>
+            
+
+        </form>
+    </div>
+</div>
+</div>
+</div>
+<!--<app-second [data]="fname"></app-second>-->

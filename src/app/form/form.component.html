@@ -1,0 +1,113 @@
+
+ <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      
+      <div class="navbar-header">
+          <a class="navbar-brand" routerLink="/first"><img id="logo" class="pull-left" src="https://www.ag-grid.com/images/angular2.png">CNT</a>
+          
+        <!-- <a class="navbar-brand" routerLink="/first">CNT</a> -->
+      </div>
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Home</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a routerLink="/register"><span class="glyphicon glyphicon-user"></span> Register</a></li>
+        <li><a routerLink="/first"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+      </ul>
+    </div>
+  </nav>
+<div class="centered">
+  <div class="card card-container"> 
+<h2 class="text-center">
+  Registration Form</h2> 
+
+<div class="jumbotron vertical-center">
+  <div class="container">
+    <form [formGroup]="signupform" (ngSubmit)="submit()">
+      <div formGroupName="name">
+        <div class="form-group">
+          <label for="firstname">Firstname:</label>
+          <div class="input-group">
+              <span class="input-group-addon">
+                  <i class="glyphicon glyphicon-user"></i>
+                </span>
+            <input  type="text" id="firstname" appCopypaste formControlName="firstname" class="form-control">
+           
+            <span *ngIf="!signupform.get('name.firstname').valid && signupform.get('name.firstname').touched" class="help-block">enter valid name</span>
+          </div>
+        </div>
+        <br>
+        <div class="form-group">
+          <label for="lastname">Password:</label>
+          <div class="input-group">
+              <span class="input-group-addon">
+                  <i class="glyphicon glyphicon-lock"></i>
+                </span>
+            <input type="password" id="password" formControlName="password" appCopypaste class="form-control">
+            
+            <span *ngIf="!signupform.get('name.password').valid && signupform.get('name.password').touched" class="help-block">enter valid Password</span>
+          </div>
+          <br>
+        </div>
+      </div>
+      <div class="form-group">
+          <div class='input-group date'>
+              <span class="input-group-addon">
+                  <span class="glyphicon glyphicon-calendar"></span>
+              </span>
+                <input type="date" class="form-control" id="dob" placeholder="Date of Birth" [(ngModel)]="dob" formControlName="dob">
+              </div>          
+          </div>
+      <div class="form-group">
+          <label class="radio-inline">              
+      <div class="radio" *ngFor="let gender of genders">
+        <label>
+          <input
+            type="radio"
+            formControlName="gender"
+            [value]="gender">{{ gender }}
+        </label>
+      </div>
+    </label>    
+    </div>
+    <div class="form-group">
+        <label for="email">Email:</label>
+        <div class="input-group">
+            <span class="input-group-addon">
+                <i class="glyphicon glyphicon-envelope"></i>
+              </span>
+          <!-- <div class="col-xs-6 .col-sm-4"> -->
+          <input type="text" id="email" appCopypaste formControlName="email" class="form-control">
+          <!-- <span *ngIf="!signupform.get('email').valid && signupform.get('email').touched&& signupform.get('email').emailpat" class="help-block">enter valid mail id</span> -->
+          <span *ngIf="!signupform.get('email').emailpat&&signupform.get('email').touched" class="help-block">enter valid mail id</span>
+          
+        </div>
+        <!-- </div> -->
+      </div>
+      
+      <br>
+      <button class="btn btn-primary" type="submit" [disabled]="!signupform.valid">Register</button>
+
+      <button class="btn btn-primary" (click)="list()">Registered User</button>
+
+      <button class="btn btn-primary" (click)="routetoreg()">Login</button>
+
+    </form>
+</div>
+
+    <!-- <div *ngIf="list()"></div>
+    <h3>All Users</h3>
+    <li>this.info</li> -->
+
+    <!--  <hr>
+        <div *ngIf="submitted">
+        <h3>Submitted Data:</h3>
+  
+        
+        <p>Username:{{user.username}} </p>
+        <p>Email:{{user.email}} </p>
+        -->
+  </div>
+</div>
+</div>
+

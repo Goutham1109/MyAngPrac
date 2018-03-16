@@ -1,0 +1,65 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+
+</style>
+
+
+<div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>
+  <a [routerLink]="['/first']">Home</a>
+  <a [routerLink]="['/register']">Register</a>  
+  <a [routerLink]="['/login']">Login</a>
+  
+</div>
+
+<span style="font-size:30px;cursor:pointer" (click)="openNav()">&#9776; open</span>
+
+
+                    
+
+<div class="jumbotron">
+<input type="text" [(ngModel)]="search" id="searches" placeholder="filter by name">
+<ul>
+    <li *ngFor="let e of employees | FilterPipe: search">
+      {{e.first_name}}
+    </li>
+  </ul>
+
+<table>
+ 
+  <thead class="thead-dark">
+<tr>
+  <th>ID</th>
+  <th>Firstname</th>
+  <th>Lastname</th>
+  <th>email</th>
+  <th>Delete</th>
+  <th>Edit</th>
+</tr>
+</thead>
+
+  
+  <tr *ngFor="let emp of employees| paginate: {itemsPerPage: 15, currentPage:page, id: '1'}">
+  <td>{{emp.id}}</td>
+<td>{{emp.first_name}}</td>  
+<td>{{emp.last_name}}</td>
+<td>{{emp.email}}</td>
+<td (click)=delete(emp.id)><a>delete</a></td>
+<td [routerLink]="['crudedit/', emp.id]">edit</td>
+</tr>
+</table>
+<pagination-controls (pageChange)="page = $event" id="1"
+maxSize="5"
+directionLinks="true"
+autoHide="true">
+</pagination-controls>
+<br>
+
+<button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" (click)=add()>add new emp</button>
+<router-outlet> </router-outlet>
+</div>
+
+<form>
+  <input type="checkbox" name="checkbox"/>checkbox
+</form>
+

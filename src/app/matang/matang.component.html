@@ -1,0 +1,77 @@
+<div style="text-align: center">
+
+<div class="jumbotron">
+    
+
+<form [formGroup]="matform" (ngSubmit)="final()">
+        <!-- ng-submit="final()" -->
+        <div class="form-group">
+      <mat-form-field>
+        <input matInput placeholder="enter user name" formControlName="username" class="form-control">
+        </mat-form-field>
+    <i class="material-icons">face</i>
+    </div>
+
+<br>
+<div class="form-group">    
+    <mat-form-field>
+        <input matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'" formControlName="pwd" class="form-control">
+     <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+    </mat-form-field>
+    </div>
+<br>
+<div class="form-group">    
+     <mat-form-field >
+        <input matInput [matDatepickerFilter]="myFilter" [matDatepicker]="picker" placeholder="DOB" 
+        formControlName="date" class="form-control">
+            <mat-datepicker #picker></mat-datepicker>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>      
+        </mat-form-field>
+        </div>
+<br>
+<div class="form-group">    
+        <label class="example-margin">Gender :</label>                
+            <mat-radio-group formControlName="gender" class="form-control">
+                <mat-radio-button value="male" color="primary">Male</mat-radio-button>
+                <mat-radio-button value="female">Female</mat-radio-button>         
+            </mat-radio-group>
+            </div>
+<br>
+        <div class="form-group">
+                <mat-form-field>
+                        <mat-select placeholder="Select any 1" [(value)]="emp" formControlName="emp" class="form-control">
+                          <mat-option>none</mat-option>
+                          <mat-option value="IT">IT </mat-option>
+                          <mat-option value="GOVT">GOVT</mat-option>
+                          <mat-option value="Others">Others </mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                    </div>
+                    
+        <!-- <div class="form-group">
+                <mat-form-field >
+                        <input matInput placeholder="Email" formControlname="email">
+                                 [errorStateMatcher]="matcher">  
+                         <mat-hint>Errors appear instantly!</mat-hint>
+                        <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+                          Please enter a valid email address
+                        </mat-error>
+                        <mat-error *ngIf="emailFormControl.hasError('required')">
+                          Email is <strong>required</strong>
+                        </mat-error>
+                      </mat-form-field> 
+                           <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+                          </mat-form-field> 
+
+                          <mat-error 
+                          *ngIf="matform.controls['address'].errors?.required &&
+                          myForm.controls['address'].touched">Company Address 2 is Required </mat-error>
+
+                        </mat-form-field>
+        </div> -->
+        <br>
+        <br>
+        <button mat-raised-button>submit</button>
+</form>
+</div>
+</div>
